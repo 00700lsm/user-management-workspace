@@ -15,6 +15,13 @@
 | Backend 인계 | 서비스 책임, DB 소유, BE 착수/테스트 | [Backend AA 인계](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/README.md) |
 | Frontend 인계 | 화면별 행위/API, 사용자 흐름, 디자인 일관성 | [Frontend AA 인계](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/README.md) |
 
+## 기술 스택 검토
+
+- [공통 PoC 기술 스택 제안](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md): Spring Boot + JPA/H2, React/Vite, Git/DB 통합 기준. **AA 미승인 제안**
+- [Backend H2·JPA 환경 인계](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md)
+- [Frontend Vite·React 초기 환경 인계](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md)
+- [AA 미결정 사항](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)에서 DEC-003/004/011 포함 승인 여부 확인
+
 ## 로컬에서 문서 탐색
 
 ```text
