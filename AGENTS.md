@@ -22,3 +22,7 @@ See [README.md](./README.md) and [getting started](./docs/getting-started.md).
 ## Initialization skill
 
 Claude Code users can explicitly run `/workspace-init` from this root. See `.claude/skills/workspace-init/SKILL.md`. Never auto-run it; it only clones missing repositories and checks their state.
+
+## Cross-agent skill
+
+Canonical project-local init skill: `.agents/skills/workspace-init/SKILL.md` (Cursor, Codex, compatible agents). Claude Code's `.claude/skills/workspace-init/SKILL.md` is an adapter. Invoke only on explicit request, reusing `scripts/init.sh`.
