@@ -13,4 +13,4 @@ Running the editor or Agent must not automatically fetch, pull, or change branch
 Invoke `/workspace-init` explicitly for first-time repository cloning and read-only checks. The skill is `.claude/skills/workspace-init/SKILL.md`; do not auto-run it or mistake it for the built-in `/init`.
 
 ## Development skills
-Use `/frontend-workflow`, `/backend-workflow`, or `/contract-reference` from Workspace root. Canonical rules are in `repos/user-management-contract/docs/governance/agent-skills-guide.md`. Do not commit application code in Workspace root.
+Use `/contract-reference`, `/frontend-workflow`, or `/backend-workflow` from Workspace root. These read `.agents/skills/` wrappers and the owning child repository's detailed Skill. Shared authoring rules: `repos/user-management-contract/docs/governance/agent-skills-guide.md`. Never commit application changes at Workspace root.
