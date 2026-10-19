@@ -26,3 +26,10 @@ Claude Code users can explicitly run `/workspace-init` from this root. See `.cla
 ## Cross-agent skill
 
 Canonical project-local init skill: `.agents/skills/workspace-init/SKILL.md` (Cursor, Codex, compatible agents). Claude Code's `.claude/skills/workspace-init/SKILL.md` is an adapter. Invoke only on explicit request, reusing `scripts/init.sh`.
+
+## Development skills
+- Canonical Contract guide: `repos/user-management-contract/docs/governance/agent-skills-guide.md`
+- Shared AA reference: `.agents/skills/contract-reference/SKILL.md`
+- Frontend workflow: `.agents/skills/frontend-workflow/SKILL.md` (delegates to `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md`)
+- Backend workflow: `.agents/skills/backend-workflow/SKILL.md` (delegates to `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`)
+- FE/BE must use their approved `contract.sha` and commit only in the owning repository.
