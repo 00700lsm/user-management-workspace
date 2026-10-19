@@ -1,7 +1,9 @@
-# Claude Code workspace guidance
+# Claude Code — Multi-repository Workspace
 
-See [AGENTS.md](./AGENTS.md) for this workspace's setup-only scope.
+Start by reading [AGENTS.md](./AGENTS.md).
 
-Read shared project rules from `repos/user-management-contract/docs/governance/git-workflow.md`, API contract from `repos/user-management-contract/openapi.yaml`, and the relevant Backend/Frontend repository's own `CONTRIBUTING.md` before changing implementation.
+The Workspace root owns only initialization tooling and documentation. **Do not commit feature code from the Workspace root.** Choose one of the independent repositories under `repos/` and use that repository's Git history and feature branches based on `dev`.
 
-Never infer that all 4 Git repositories share a branch or commit history. Do not automatically pull or change branches during initialization. Contract changes require the Contract repository's approved PR process.
+Project design and API contract are authoritative in `repos/user-management-contract/`, especially `docs/governance/git-workflow.md` and `openapi.yaml`. Backend and Frontend must use their approved `contract.sha` and maintain separate commits/PRs.
+
+Running the editor or Agent must not automatically fetch, pull, or change branches. Init clones new repos at `dev`; existing repos can be switched/pulled only by explicit `bash scripts/use-dev.sh`.
