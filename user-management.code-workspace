@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "Workspace Setup",
+      "path": "."
+    },
+    {
+      "name": "Contract",
+      "path": "repos/user-management-contract"
+    },
+    {
+      "name": "Backend",
+      "path": "repos/user-management-backend"
+    },
+    {
+      "name": "Frontend",
+      "path": "repos/user-management-frontend"
+    }
+  ],
+  "settings": {
+    "git.autofetch": false
+  }
+}
