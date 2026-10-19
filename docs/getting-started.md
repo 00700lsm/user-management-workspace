@@ -50,3 +50,7 @@ Backend: `bash scripts/sync-contract.sh` (현재는 명세 다운로드; 서버 
 ## Claude Code
 
 Workspace 루트에서 Claude Code를 실행해 `/workspace-init` 스킬을 호출할 수 있습니다. 기존 `scripts/init.sh`로 최초 Clone을 수행하고 각 저장소의 상태만 검사합니다. 자동 Pull은 하지 않습니다.
+
+## Cursor / Codex / 기타 Agent
+
+Workspace 루트에서 `.agents/skills/workspace-init/SKILL.md`를 사용합니다. 지원하는 도구에 `workspace-init` 스킬 실행을 명시적으로 요청하세요. 해당 스킬은 `scripts/init.sh`를 호출하고 세 저장소의 상태를 읽기 전용으로 점검합니다. 기존 저장소를 자동 Pull하거나 브랜치를 바꾸지 않습니다.
