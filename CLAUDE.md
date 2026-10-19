@@ -14,3 +14,5 @@ Invoke `/workspace-init` explicitly for first-time repository cloning and read-o
 
 ## Development skills
 Use `/contract-reference`, `/frontend-workflow`, or `/backend-workflow` from Workspace root. These read `.agents/skills/` wrappers and the owning child repository's detailed Skill. Shared authoring rules: `repos/user-management-contract/docs/governance/agent-skills-guide.md`. Never commit application changes at Workspace root.
+
+For any Frontend UI/CSS work started from Workspace root, **read `repos/user-management-frontend/design.md` before editing** and follow the child Frontend Skill. Do not skip this step when delegating.

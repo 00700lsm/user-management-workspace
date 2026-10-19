@@ -33,3 +33,6 @@ Canonical project-local init skill: `.agents/skills/workspace-init/SKILL.md` (Cu
 - Frontend workflow: `.agents/skills/frontend-workflow/SKILL.md` (delegates to `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md`)
 - Backend workflow: `.agents/skills/backend-workflow/SKILL.md` (delegates to `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`)
 - FE/BE must use their approved `contract.sha` and commit only in the owning repository.
+
+## Mandatory Frontend design system
+Every Agent working on a Frontend page, component, layout or CSS **must first read `repos/user-management-frontend/design.md`**, then the child Frontend Skill. Honor Contract UI/IA rules as higher-level authority. Do not generate alternative visual standards silently.
