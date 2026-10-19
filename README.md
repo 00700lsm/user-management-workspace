@@ -80,3 +80,7 @@ bash scripts/use-dev.sh
 ## Cursor / Codex / 기타 AI Agent 스킬
 
 공통 초기화 스킬 정본은 [`.agents/skills/workspace-init/SKILL.md`](.agents/skills/workspace-init/SKILL.md)입니다. Cursor와 Codex처럼 프로젝트 로컬 Agent Skills를 지원하는 도구에서 명시적으로 `workspace-init` 스킬을 요청하세요. Claude Code의 `/workspace-init`도 이 스킬을 참조합니다. 모두 같은 `scripts/init.sh`를 사용하며, 기존 Clone은 Pull/전환하지 않습니다.
+
+## AA 문서 안내
+
+[AA 설계 문서 포털](docs/aa/README.md)에서 Contract/Backend/Frontend 인계서를 한 번에 찾아볼 수 있습니다. 개발 전 [착수 체크리스트](docs/aa/developer-start-checklist.md)를 확인하세요. **Workspace 루트에는 업무 기능이나 AA 설계의 정본을 저장·커밋하지 않습니다.**
