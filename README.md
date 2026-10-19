@@ -30,6 +30,21 @@ user-management-workspace/        # Init 문서/스크립트만
 
 Cursor/VS Code에서 `user-management.code-workspace`를 열어 네 폴더(Workspace Setup/Contract/Backend/Frontend)를 확인하세요. **에디터 실행 시 자동 Git Pull은 하지 않습니다.**
 
+## Claude Code 초기화 스킬
+
+Workspace Repository 루트에서 Claude Code를 시작한 뒤 **`/workspace-init`** 을 실행할 수 있습니다.
+
+```bash
+git clone https://github.com/00700lsm/user-management-workspace.git
+cd user-management-workspace
+claude
+# Claude Code 세션에서 /workspace-init 실행
+```
+
+스킬 파일: [`.claude/skills/workspace-init/SKILL.md`](.claude/skills/workspace-init/SKILL.md)
+
+스킬은 기존 `scripts/init.sh`를 사용해 누락된 Repository를 `dev`로 Clone하고 각 Repository의 브랜치·upstream·Contract SHA 상태를 **읽기 전용으로 확인**합니다. **기존 Clone Pull/브랜치 변경/Commit은 자동 수행하지 않습니다.** Claude Code 내장 `/init`과 구분되는 이름입니다.
+
 ## 기존 Clone의 dev 브랜치 설정/명시적 Pull
 
 ```bash
