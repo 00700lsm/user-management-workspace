@@ -93,3 +93,7 @@ bash scripts/use-dev.sh
 - [스킬 작성 및 공통 준수 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
 
 Workspace의 스킬은 하위 저장소 스킬로 연결합니다. Claude Code에서는 같은 이름의 프로젝트 스킬을 사용하며, 코드 커밋은 각 구현 저장소에서만 합니다.
+
+## 프로젝트 기술 스택 제안
+
+공통 아키텍처·H2 embedded DB 운영 제안은 [Contract 기술 스택 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md)에서 관리합니다. 각 Repository의 [Backend](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md) / [Frontend](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md) 시작 안내를 참고하세요. **기술 선택은 아직 AA 승인 전이며 Workspace 루트에 앱이나 DB 파일을 저장하지 않습니다.**
