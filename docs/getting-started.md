@@ -46,3 +46,7 @@ Frontend도 **별도** `repos/user-management-frontend`에서 같은 절차를 �
 Frontend: `npm install && npm run contract:generate`.
 Backend: `bash scripts/sync-contract.sh` (현재는 명세 다운로드; 서버 계약 테스트는 추후).
 `contract.sha`는 승인된 Contract 커밋을 가리키며 자동으로 최신 값으로 바뀌지 않습니다.
+
+## Claude Code
+
+Workspace 루트에서 Claude Code를 실행해 `/workspace-init` 스킬을 호출할 수 있습니다. 기존 `scripts/init.sh`로 최초 Clone을 수행하고 각 저장소의 상태만 검사합니다. 자동 Pull은 하지 않습니다.
