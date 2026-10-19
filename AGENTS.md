@@ -1,19 +1,20 @@
-# Agent entrypoint — User Management Workspace
+# Workspace Agent Instructions
 
-Scope: top-level setup repository only. The three implementation/contract repositories below `repos/` are independently version-controlled.
+This repository is an **init/setup shell**, not the application source repository.
 
-## Before working
-1. Read `README.md` and `docs/getting-started.md`.
-2. Read the authoritative documents under `repos/user-management-contract/docs/` and `repos/user-management-contract/openapi.yaml` when those repositories have been initialized.
-3. If the working copies are absent, request that the user run `bash scripts/init.sh` (or receive explicit permission to run it).
+## Required scope
+- **Never commit application, API or domain changes in the Workspace root.**
+- Commit/Open PR in the owning Git repository under `repos/`: Contract, Backend, or Frontend.
+- Only maintain bootstrap, editor workspace config, and environment guidance in the Workspace root Git repository.
+- All three child repositories normally work from `dev` / `origin/dev`. Branch features from `dev`, and target PRs to `dev`.
+- Read the Contract repository's `docs/governance/git-workflow.md` before editing app code and honor `contract.sha` in FE/BE.
+- Domain allocation is aligned full-stack: A=Auth FE+BE, B=User FE+BE, C=Permission FE+BE.
 
-## Guardrails
-- Workspace repository owns **initial clone and editor workspace configuration only**. Do not add automatic Git pull/fetch, branch changes, or repository-wide commits during editor startup.
-- Work in the relevant Git repository. Do not treat the parent Workspace as a monorepo.
-- Backend and Frontend `contract.sha` must point to the approved shared API contract commit.
-- Do not change the API contract solely to match implementation. Propose and review contract changes first.
-- Do not automatically switch, reset, rebase, merge, force-push, or overwrite uncommitted developer work.
-- Each domain owner handles matching FE+BE: A Auth, B User, C Permission.
-- Ask before pushing, opening a PR, merging, or modifying other repositories when authority is unclear.
+## Initial setup / syncing
+- `bash scripts/init.sh`: clone absent repositories at `dev`. Existing clones are never switched or pulled.
+- `bash scripts/use-dev.sh`: explicit command to switch/fast-forward pull `dev` on all three child repositories. Never run it automatically when an editor or Agent session starts.
+- Never reset, rebase, force-push or overwrite a developer's local changes without explicit agreement.
+- Work only within the appropriate Git working directory when running Git commands.
+- Ask before pushing, opening PRs or merging if permission/scope is unclear.
 
-For more detailed, current governance rules refer to the Contract repository rather than duplicating them here.
+See [README.md](./README.md) and [getting started](./docs/getting-started.md).
