@@ -1,30 +1,48 @@
-# 개발자 초기 설정 및 작업 안내
+# 개발자 최초 구성 및 Git 브랜치 사용법
 
-## 최초 실행
+## 최초 1회
 ```bash
 git clone https://github.com/00700lsm/user-management-workspace.git
 cd user-management-workspace
 bash scripts/init.sh
 ```
 
-그다음 Cursor 또는 VS Code에서 `user-management.code-workspace`를 엽니다. `repos/` 아래 세 작업 폴더가 Workspace에 등록됩니다.
+Contract, Backend, Frontend 세 저장소가 `repos/`에 `dev`를 체크아웃한 상태로 설치됩니다. 각각 `origin/dev`를 추적합니다. Cursor 또는 VS Code에서 `user-management.code-workspace` 파일을 열어 작업하세요.
 
-### 사전 확인
-- macOS/Linux: Git과 Bash 필요
-- Windows: Git Bash 또는 WSL 사용
-- GitHub 접근 권한 필요 (현재 저장소는 공개 상태)
-- 팀원별로 Git 작성자 정보 및 GitHub 인증 설정 필요
+## 기존 설치 또는 명시적인 최신화
+```bash
+bash scripts/use-dev.sh
+```
 
-## 기능 개발 시
-1. Contract Repo의 요구사항·화면/DB 초안·협업 규칙·`openapi.yaml`을 확인합니다.
-2. FE/BE 저장소에서 각각 해당 도메인의 기능 브랜치를 만듭니다.
-3. 각 저장소의 `contract.sha`가 동일한 승인된 계약 커밋을 가리키는지 확인합니다.
-4. Frontend: `npm install && npm run contract:generate` (프로젝트 구성 단계에 따라 필요).
-5. Backend: `bash scripts/sync-contract.sh` (현재는 명세 다운로드/검증 기반이며 실제 서버 테스트는 후속 구현).
-6. FE와 BE 변경은 **각 저장소에서 개별 커밋 및 PR**을 제출합니다.
-7. API 규격이 바뀌면 구현보다 Contract PR을 먼저 처리합니다.
+이 명령은 미커밋 변경이 없음을 확인한 뒤 세 저장소를 `dev`로 전환하여 `git pull --ff-only`합니다. **기존 Clone에서 자동 전환/자동 Pull은 하지 않습니다.** 작업 중에는 각 개발자가 필요한 저장소에서 수동 Fetch/Pull하세요.
 
-## 실행 범위
-`scripts/init.sh`는 **Clone만 담당**합니다. 반복 실행 시 정상 Clone 폴더는 건드리지 않고 넘어갑니다. 자동 Pull, 브랜치 변경, Git 설정 변경, npm install, 코드 수정, AI Agent 실행은 하지 않습니다.
+## 기능 브랜치 / Commit / PR
+```bash
+cd repos/user-management-backend
+git switch dev
+git pull --ff-only
+git switch -c feat/auth-login
+# 개발 후 이 저장소에서만:
+git status
+git add auth/
+git commit -m "feat(auth): implement login"
+git push -u origin feat/auth-login
+# PR: feat/auth-login → dev
+```
 
-주의: 공통 Contract의 문서 변경이 있었다고 각 구현 저장소의 `contract.sha`가 자동으로 변경되는 것은 아닙니다. 계약 버전 조정은 명시적으로 진행합니다.
+Frontend도 **별도** `repos/user-management-frontend`에서 같은 절차를 수행합니다. 계약 변경 시에는 **Contract Repository에서 먼저** `contract/* → dev` PR을 제안·검토하고, 승인된 계약 SHA를 각 구현 저장소의 `contract.sha`에 반영합니다.
+
+- `main`: 릴리스/안정 기준선
+- `dev`: 팀 통합 작업 기준선
+- `feat/*`, `fix/*`: 작업 브랜치 → `dev` PR
+- `dev → main`: 검증 후 릴리스 PR
+
+## Workspace Root Commit 금지 범위
+- Workspace root에서 도메인 코드·요구사항·API·FE/BE 변경을 Commit하지 않습니다.
+- Contract/Backend/Frontend **각자의 `.git`**에서 Commit/Push/PR을 수행합니다.
+- 예외: `init.sh`, 에디터 설정, Workspace 개발 가이드 수정은 이 Workspace Repository에서 관리합니다.
+
+## 계약·컴포넌트 검증
+Frontend: `npm install && npm run contract:generate`.
+Backend: `bash scripts/sync-contract.sh` (현재는 명세 다운로드; 서버 계약 테스트는 추후).
+`contract.sha`는 승인된 Contract 커밋을 가리키며 자동으로 최신 값으로 바뀌지 않습니다.
