@@ -1,10 +1,11 @@
 # User Management Workspace
 
-사용자 관리 PoC를 위한 **최초 1회 개발 환경 구성 저장소**입니다. 이 저장소 자체에는 Frontend/Backend 소스와 OpenAPI 정본을 넣지 않습니다.
+사용자 관리 프로젝트의 **초기 개발 환경 구성 전용 Repository**입니다.
+공통 규칙·계약 및 기능 코드는 각각 독립된 하위 Repository가 소유합니다.
 
-## 1. 최초 설치
+## 최초 설치
 
-Git과 Bash가 필요합니다. macOS/Linux에서 실행할 수 있으며 Windows는 Git Bash 또는 WSL을 사용하세요.
+Git + Bash가 필요합니다 (Windows: Git Bash/WSL).
 
 ```bash
 git clone https://github.com/00700lsm/user-management-workspace.git
@@ -12,49 +13,51 @@ cd user-management-workspace
 bash scripts/init.sh
 ```
 
-`init.sh`는 `repos/` 폴더에 Contract, Backend, Frontend 저장소를 Clone합니다. 이미 올바른 저장소가 있으면 **건너뛰고 변경하지 않습니다.** Git Pull, Fetch, 브랜치 생성, Commit 및 의존성 설치를 자동 수행하지 않습니다.
-
-## 2. 개발환경 열기
-
-Cursor 또는 VS Code에서 `user-management.code-workspace` 파일을 엽니다.
+`init.sh`는 새로 Clone하는 Contract/Backend/Frontend를 **각각 `dev` 브랜치로 Checkout**하고 `origin/dev`를 추적하도록 구성합니다. 기존 Clone이 있으면 수정하거나 Pull하지 않습니다.
 
 ```text
-user-management-workspace/      # 별도 Git 저장소: 초기화 도구/안내
+user-management-workspace/        # Init 문서/스크립트만
 ├── scripts/init.sh
+├── scripts/use-dev.sh
 ├── user-management.code-workspace
 ├── AGENTS.md
 ├── CLAUDE.md
-└── repos/                      # Git 추적 제외; init이 생성
-    ├── user-management-contract/
-    ├── user-management-backend/
-    └── user-management-frontend/
+└── repos/                        # .gitignore 대상 (개별 Git Repository)
+    ├── user-management-contract/ # dev → origin/dev
+    ├── user-management-backend/  # dev → origin/dev
+    └── user-management-frontend/ # dev → origin/dev
 ```
 
-## 3. 개발 규칙과 문서 정본
+Cursor/VS Code에서 `user-management.code-workspace`를 열어 네 폴더(Workspace Setup/Contract/Backend/Frontend)를 확인하세요. **에디터 실행 시 자동 Git Pull은 하지 않습니다.**
 
-- [공통 API 계약](https://github.com/00700lsm/user-management-contract/blob/main/openapi.yaml)
-- [AA 설계 및 화면·DB 기준](https://github.com/00700lsm/user-management-contract/tree/main/docs)
-- [Git·PR 협업 규칙](https://github.com/00700lsm/user-management-contract/blob/main/docs/governance/git-workflow.md)
-- [API 계약 변경/승인 절차](https://github.com/00700lsm/user-management-contract/blob/main/docs/contract-governance.md)
+## 기존 Clone의 dev 브랜치 설정/명시적 Pull
 
-공통 개발 기준은 **Contract 저장소에만 유지**합니다. Workspace는 그 링크를 안내하며 규칙을 별도 복제하지 않습니다.
+```bash
+bash scripts/use-dev.sh
+```
 
-### 담당 영역
+위 명령은 세 저장소의 작업 트리가 모두 깨끗한지 확인한 뒤 `dev` 브랜치로 전환하여 **fast-forward Pull만** 실행합니다. 충돌하거나 로컬 작업이 있으면 자동 Merge/Reset/Rebase하지 않습니다.
+
+## Git 커밋 규칙 (중요)
+
+**업무 코드 및 업무 설계 변경을 Workspace 루트에 커밋하지 않습니다.**
+
+- Contract/OpenAPI/공통 개발 규칙 → `repos/user-management-contract`
+- Backend 기능/테스트 → `repos/user-management-backend`
+- Frontend 기능/UI/테스트 → `repos/user-management-frontend`
+- Workspace 루트의 Git은 **Init 스크립트, Workspace 설정, 개발 환경 안내의 변경에만 예외적으로 사용**합니다.
+- 기능 개발은 각 Repository의 `dev`에서 기능 브랜치를 만들어 개별 Commit/Push/PR을 진행합니다.
+
+공통 규칙 정본: [Git 협업 운영 규칙](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/git-workflow.md)
+
+## 담당
 
 | 개발자 | Backend | Frontend |
 |---|---|---|
 | A | Auth | 로그인·로그아웃·비밀번호 |
-| B | User | 회원가입·프로필·사용자 CRUD |
+| B | User | 회원가입·프로필·사용자 관리 |
 | C | Permission | Role·사용자 권한 관리 |
 
-동일 개발자가 **같은 업무 영역의 FE + BE**를 담당합니다.
+같은 담당자가 같은 도메인의 FE+BE를 개발합니다.
 
-## 4. 개발 작업
-
-각 Repository는 독립 Git 저장소입니다. 현재 작업 폴더에서 해당 Repository로 이동해 `git fetch`, `git pull`, 브랜치 생성, Commit, PR을 **필요할 때 개별 수행**하세요. 하나의 Workspace로 열었다고 세 Repository의 커밋이 합쳐지지는 않습니다.
-
-Frontend/Backend는 각각의 `contract.sha`에 고정된 공통 OpenAPI 버전을 사용합니다. 계약 변경은 **Contract Repo PR 승인 및 Merge를 먼저** 진행합니다.
-
-더 자세한 작업 순서는 [개발 시작 안내](docs/getting-started.md)를 참고하세요.
-
-> 이 저장소는 Clone 및 에디터 워크스페이스 구성만 자동화합니다. Git 동기화·코드 생성·테스트·Agent 실행은 개발자가 명시적으로 수행합니다.
+상세 절차: [개발 시작 안내](docs/getting-started.md).
