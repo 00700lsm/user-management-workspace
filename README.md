@@ -84,3 +84,12 @@ bash scripts/use-dev.sh
 ## AA 문서 안내
 
 [AA 설계 문서 포털](docs/aa/README.md)에서 Contract/Backend/Frontend 인계서를 한 번에 찾아볼 수 있습니다. 개발 전 [착수 체크리스트](docs/aa/developer-start-checklist.md)를 확인하세요. **Workspace 루트에는 업무 기능이나 AA 설계의 정본을 저장·커밋하지 않습니다.**
+
+## 개발 단계별 Agent 스킬
+
+- [Contract 공통 참조](.agents/skills/contract-reference/SKILL.md)
+- [Frontend 설정→개발→Mock→통합](.agents/skills/frontend-workflow/SKILL.md)
+- [Backend 설정→개발→계약 테스트→통합](.agents/skills/backend-workflow/SKILL.md)
+- [스킬 작성 및 공통 준수 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
+
+Workspace의 스킬은 하위 저장소 스킬로 연결합니다. Claude Code에서는 같은 이름의 프로젝트 스킬을 사용하며, 코드 커밋은 각 구현 저장소에서만 합니다.
