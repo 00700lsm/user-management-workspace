@@ -18,3 +18,7 @@ This repository is an **init/setup shell**, not the application source repositor
 - Ask before pushing, opening PRs or merging if permission/scope is unclear.
 
 See [README.md](./README.md) and [getting started](./docs/getting-started.md).
+
+## Initialization skill
+
+Claude Code users can explicitly run `/workspace-init` from this root. See `.claude/skills/workspace-init/SKILL.md`. Never auto-run it; it only clones missing repositories and checks their state.
