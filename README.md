@@ -99,3 +99,40 @@ Workspace의 스킬은 하위 저장소 스킬로 연결합니다. Claude Code�
 공통 아키텍처·H2 embedded DB 운영 기준은 [Contract 기술 스택 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md)에서 관리합니다. 각 Repository의 [Backend](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md) / [Frontend](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md) 시작 안내를 참고하세요. **PoC 기술 기준은 Contract DEC-001~011에서 Accepted입니다. Workspace 루트는 여전히 초기 Clone/문서 진입만 담당하고 실제 앱/DB는 하위 저장소에서 관리합니다.**
 
 실제 Skeleton 상태와 실행 순서는 [Backend 상태](https://github.com/00700lsm/user-management-backend/blob/dev/docs/implementation-status.md) 및 [Frontend 상태](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/implementation-status.md)를 참고하세요. Backend/Frontend CI 기초 테스트는 통과했지만 실제 인증/업무 API 연동은 이후 구현 대상입니다.
+
+## 전체 프로젝트 실행 (로컬 개발)
+
+**사전 준비:** Git, Bash, Java 21, Node.js 24/npm, 인터넷 연결(Gradle·npm·승인된 OpenAPI 다운로드). Windows는 Git Bash/WSL 사용을 권장합니다. H2는 Backend에 내장되어 있어 별도 DB 서버 설치가 필요 없습니다.
+
+처음 설치하는 경우 Workspace 루트에서 아래 명령으로 세 저장소를 준비합니다. 기존 저장소의 변경사항은 자동 Pull하지 않습니다.
+
+```bash
+bash scripts/init.sh
+```
+
+**터미널 1 — Backend (http://localhost:8080):**
+
+```bash
+cd repos/user-management-backend
+mkdir -p .local-data
+./gradlew test
+./gradlew bootRun
+```
+
+**터미널 2 — Frontend (http://localhost:5173):** Workspace 루트에서 새 터미널을 엽니다.
+
+```bash
+cd repos/user-management-frontend
+npm install
+npm run contract:generate
+npm run mocks:init
+cp .env.example .env.local
+# .env.local 파일에서 VITE_ENABLE_MOCKS=true 설정 (개발용)
+npm run dev
+```
+
+- Mock 모드: `http://localhost:5173/login`에서 **Mock USER / Mock ADMIN**으로 화면·권한 라우트만 체험할 수 있습니다. 서명된 JWT가 아니며 실제 Backend 인증을 검증하지 않습니다.
+- 실제 Backend 연동 모드: `.env.local`에서 `VITE_ENABLE_MOCKS=false`로 변경 후 Frontend를 재시작합니다. 현재 실제 로그인·가입·관리 API는 미구현이므로 정상 동작하지 않습니다.
+- Backend 상태 확인: 별도 터미널에서 `curl http://localhost:8080/actuator/health`를 실행합니다.
+- 테스트: Backend `./gradlew test`; Frontend `npm run typecheck && npm run test && npm run build`. Mock 브라우저 테스트는 Playwright Chromium 설치 후 `npm run test:e2e`.
+- H2 로컬 데이터는 `repos/user-management-backend/.local-data/`에 생성되며 Git 추적에서 제외됩니다. Frontend의 `contract:generate`는 `contract.sha`에 고정된 OpenAPI를 사용합니다.
