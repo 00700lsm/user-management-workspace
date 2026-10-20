@@ -17,7 +17,7 @@
 
 ## 기술 스택 검토
 
-- [공통 PoC 기술 스택 제안](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md): Spring Boot + JPA/H2, React/Vite, Git/DB 통합 기준. **AA 미승인 제안**
+- [공통 PoC 기술 스택 제안](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md): Spring Boot + JPA/H2, React/Vite, Git/DB 통합 기준. **PoC Accepted 기준**
 - [Backend H2·JPA 환경 인계](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md)
 - [Frontend Vite·React 초기 환경 인계](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md)
 - [AA 미결정 사항](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/decisions.md)에서 DEC-003/004/011 포함 승인 여부 확인
@@ -37,3 +37,5 @@ user-management-workspace/
 - `dev`는 팀 통합 브랜치, `main`은 안정 기준선입니다.
 - 구현 시 Frontend/Backend `contract.sha`에 지정된 **승인된 Contract 커밋**을 사용합니다. 위 `dev` 링크는 탐색용이며 SHA 고정 계약을 대체하지 않습니다.
 - 이 문서를 Workspace에 작성했다고 실제 서비스 요구·DB·API 설계가 복제되는 것은 아닙니다. 설계 변경은 **Contract Repository**에만 제출합니다.
+
+PoC 기술 스택은 2026-10-20에 Contract AA Decision 문서의 11개 항목에서 Accepted되었으며, 실행 골격과 CI Smoke 검증은 각 구현 Repo의 `docs/implementation-status.md`를 참고하세요.
