@@ -94,8 +94,8 @@ bash scripts/use-dev.sh
 
 Workspace의 스킬은 하위 저장소 스킬로 연결합니다. Claude Code에서는 같은 이름의 프로젝트 스킬을 사용하며, 코드 커밋은 각 구현 저장소에서만 합니다.
 
-## 프로젝트 기술 스택 제안
+## 확정된 PoC 기술 스택
 
-공통 아키텍처·H2 embedded DB 운영 제안은 [Contract 기술 스택 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md)에서 관리합니다. 각 Repository의 [Backend](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md) / [Frontend](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md) 시작 안내를 참고하세요. **PoC 기술 기준은 Contract DEC-001~011에서 Accepted입니다. Workspace 루트는 여전히 초기 Clone/문서 진입만 담당하고 실제 앱/DB는 하위 저장소에서 관리합니다.**
+공통 아키텍처·H2 embedded DB 운영 기준은 [Contract 기술 스택 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/tech-stack-proposal.md)에서 관리합니다. 각 Repository의 [Backend](https://github.com/00700lsm/user-management-backend/blob/dev/docs/aa/tech-stack.md) / [Frontend](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/aa/tech-stack.md) 시작 안내를 참고하세요. **PoC 기술 기준은 Contract DEC-001~011에서 Accepted입니다. Workspace 루트는 여전히 초기 Clone/문서 진입만 담당하고 실제 앱/DB는 하위 저장소에서 관리합니다.**
 
 실제 Skeleton 상태와 실행 순서는 [Backend 상태](https://github.com/00700lsm/user-management-backend/blob/dev/docs/implementation-status.md) 및 [Frontend 상태](https://github.com/00700lsm/user-management-frontend/blob/dev/docs/implementation-status.md)를 참고하세요. Backend/Frontend CI 기초 테스트는 통과했지만 실제 인증/업무 API 연동은 이후 구현 대상입니다.

@@ -13,4 +13,4 @@ Both implementations use their own `contract.sha` to pin the actual OpenAPI sche
 
 When a child repo is absent, request explicit Workspace init. Never commit application code in the Workspace root.
 
-Before project setup, read Contract `repos/user-management-contract/docs/aa/tech-stack-proposal.md`, Frontend `repos/user-management-frontend/docs/aa/tech-stack.md`, and Backend `repos/user-management-backend/docs/aa/tech-stack.md`. Treat recommendations as proposed until AA approves DEC-003/004/011. Do not install a stack from Workspace root.
+Before project setup, read Contract `repos/user-management-contract/docs/aa/tech-stack-proposal.md`, Frontend `repos/user-management-frontend/docs/aa/tech-stack.md`, and Backend `repos/user-management-backend/docs/aa/tech-stack.md`. The PoC stack is Accepted under Contract DEC-001~011; verify runtime implementation and test state separately. Do not install a stack from Workspace root.
