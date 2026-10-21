@@ -12,7 +12,13 @@ Running the editor or Agent must not automatically fetch, pull, or change branch
 
 Invoke `/workspace-init` explicitly for first-time repository cloning and read-only checks. The skill is `.claude/skills/workspace-init/SKILL.md`; do not auto-run it or mistake it for the built-in `/init`.
 
-## Development skills
-Use `/contract-reference`, `/frontend-workflow`, or `/backend-workflow` from Workspace root. These read `.agents/skills/` wrappers and the owning child repository's detailed Skill. Shared authoring rules: `repos/user-management-contract/docs/governance/agent-skills-guide.md`. Never commit application changes at Workspace root.
+## Development guidance (not Workspace skills)
 
-For any Frontend UI/CSS work started from Workspace root, **read `repos/user-management-frontend/design.md` before editing** and follow the child Frontend Skill. Do not skip this step when delegating.
+The only Workspace skill is `/workspace-init`.
+
+For application work, read the owning repository's `CLAUDE.md`, `AGENTS.md` and detailed skill:
+- Frontend: `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md`. **Always read `repos/user-management-frontend/design.md` before UI/CSS work.**
+- Backend: `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`.
+- Shared source of truth: `repos/user-management-contract/docs/aa/README.md`, `docs/governance/agent-skills-guide.md`, and the implementation repository's pinned `contract.sha`.
+
+No automatic Git operations. Commit implementation only in the owning child repository.

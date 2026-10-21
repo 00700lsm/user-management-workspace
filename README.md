@@ -85,14 +85,15 @@ bash scripts/use-dev.sh
 
 [AA 설계 문서 포털](docs/aa/README.md)에서 Contract/Backend/Frontend 인계서를 한 번에 찾아볼 수 있습니다. 개발 전 [착수 체크리스트](docs/aa/developer-start-checklist.md)를 확인하세요. **Workspace 루트에는 업무 기능이나 AA 설계의 정본을 저장·커밋하지 않습니다.**
 
-## 개발 단계별 Agent 스킬
+## 개발 작업 시 참고할 문서와 스킬
 
-- [Contract 공통 참조](.agents/skills/contract-reference/SKILL.md)
-- [Frontend 설정→개발→Mock→통합](.agents/skills/frontend-workflow/SKILL.md)
-- [Backend 설정→개발→계약 테스트→통합](.agents/skills/backend-workflow/SKILL.md)
-- [스킬 작성 및 공통 준수 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
+Workspace의 유일한 프로젝트 스킬은 [`workspace-init`](.agents/skills/workspace-init/SKILL.md)입니다. **개발을 위한 별도의 Workspace 진입 스킬은 사용하지 않습니다.**
 
-Workspace의 스킬은 하위 저장소 스킬로 연결합니다. Claude Code에서는 같은 이름의 프로젝트 스킬을 사용하며, 코드 커밋은 각 구현 저장소에서만 합니다.
+- 공통 설계 및 규칙: [Contract AA 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/README.md) · [Agent Skill 작성 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
+- Frontend 개발: [Frontend 전용 Skill](https://github.com/00700lsm/user-management-frontend/blob/dev/.agents/skills/frontend-workflow/SKILL.md) · [디자인 기준](https://github.com/00700lsm/user-management-frontend/blob/dev/design.md)
+- Backend 개발: [Backend 전용 Skill](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/backend-workflow/SKILL.md)
+
+Agent는 작업 대상 Repository의 `AGENTS.md`/`CLAUDE.md` 및 Skill을 직접 참조합니다. API 정본은 Contract에 있으며, 실제 코드/설계 변경과 Commit은 해당 Repository에서만 처리합니다.
 
 ## 확정된 PoC 기술 스택
 
