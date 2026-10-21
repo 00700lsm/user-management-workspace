@@ -27,12 +27,14 @@ Claude Code users can explicitly run `/workspace-init` from this root. See `.cla
 
 Canonical project-local init skill: `.agents/skills/workspace-init/SKILL.md` (Cursor, Codex, compatible agents). Claude Code's `.claude/skills/workspace-init/SKILL.md` is an adapter. Invoke only on explicit request, reusing `scripts/init.sh`.
 
-## Development skills
-- Canonical Contract guide: `repos/user-management-contract/docs/governance/agent-skills-guide.md`
-- Shared AA reference: `.agents/skills/contract-reference/SKILL.md`
-- Frontend workflow: `.agents/skills/frontend-workflow/SKILL.md` (delegates to `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md`)
-- Backend workflow: `.agents/skills/backend-workflow/SKILL.md` (delegates to `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`)
-- FE/BE must use their approved `contract.sha` and commit only in the owning repository.
+## Working in child repositories
+
+- **Only Workspace skill:** `.agents/skills/workspace-init/SKILL.md`; do not add workflow/delegation skills here.
+- Shared AA and skill authoring rules: `repos/user-management-contract/docs/aa/README.md` and `repos/user-management-contract/docs/governance/agent-skills-guide.md`.
+- For Frontend work, read `repos/user-management-frontend/AGENTS.md`, `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md` and its `design.md`.
+- For Backend work, read `repos/user-management-backend/AGENTS.md` and `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`.
+- Use the implementation repository's approved `contract.sha` for OpenAPI. Do not assume Contract `dev` HEAD is the pinned version.
+- Git operations, feature branches and PRs belong to the owning child repository, never the Workspace root.
 
 ## Mandatory Frontend design system
 Every Agent working on a Frontend page, component, layout or CSS **must first read `repos/user-management-frontend/design.md`**, then the child Frontend Skill. Honor Contract UI/IA rules as higher-level authority. Do not generate alternative visual standards silently.
