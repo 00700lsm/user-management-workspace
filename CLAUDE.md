@@ -18,7 +18,7 @@ The only Workspace skill is `/workspace-init`.
 
 For application work, read the owning repository's `CLAUDE.md`, `AGENTS.md` and detailed skill:
 - Frontend: `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md`. **Always read `repos/user-management-frontend/design.md` before UI/CSS work.**
-- Backend: `repos/user-management-backend/.agents/skills/backend-workflow/SKILL.md`.
+- Backend: read `repos/user-management-backend/CLAUDE.md`; use one of its four task-specific skills: `implement-api-operation`, `create-db-migration`, `validate-backend-api`, `test-auth-integration`.
 - Shared source of truth: `repos/user-management-contract/docs/aa/README.md`, `docs/governance/agent-skills-guide.md`, and the implementation repository's pinned `contract.sha`.
 
 No automatic Git operations. Commit implementation only in the owning child repository.
