@@ -31,7 +31,7 @@ Canonical project-local init skill: `.agents/skills/workspace-init/SKILL.md` (Cu
 
 - **Only Workspace skill:** `.agents/skills/workspace-init/SKILL.md`; do not add workflow/delegation skills here.
 - Shared AA and skill authoring rules: `repos/user-management-contract/docs/aa/README.md` and `repos/user-management-contract/docs/governance/agent-skills-guide.md`.
-- For Frontend work, read `repos/user-management-frontend/AGENTS.md`, `repos/user-management-frontend/.agents/skills/frontend-workflow/SKILL.md` and its `design.md`.
+- For Frontend work, read `repos/user-management-frontend/AGENTS.md` and `design.md`, then choose its task-specific `.agents/skills/implement-ui-screen`, `create-shared-ui-component`, `validate-frontend-ui` or `test-frontend-integration` Skill.
 - For Backend work, read `repos/user-management-backend/AGENTS.md` and choose the task-specific `.agents/skills/implement-api-operation`, `create-db-migration`, `validate-backend-api` or `test-auth-integration` skill in that repository.
 - Use the implementation repository's approved `contract.sha` for OpenAPI. Do not assume Contract `dev` HEAD is the pinned version.
 - Git operations, feature branches and PRs belong to the owning child repository, never the Workspace root.
