@@ -91,7 +91,7 @@ Workspace의 유일한 프로젝트 스킬은 [`workspace-init`](.agents/skills/
 
 - 공통 설계 및 규칙: [Contract AA 문서](https://github.com/00700lsm/user-management-contract/blob/dev/docs/aa/README.md) · [Agent Skill 작성 가이드](https://github.com/00700lsm/user-management-contract/blob/dev/docs/governance/agent-skills-guide.md)
 - Frontend 개발: [Frontend 전용 Skill](https://github.com/00700lsm/user-management-frontend/blob/dev/.agents/skills/frontend-workflow/SKILL.md) · [디자인 기준](https://github.com/00700lsm/user-management-frontend/blob/dev/design.md)
-- Backend 개발: [Backend 전용 Skill](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/backend-workflow/SKILL.md)
+- Backend 개발: [API 구현](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/implement-api-operation/SKILL.md) · [DB 마이그레이션](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/create-db-migration/SKILL.md) · [API 검증](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/validate-backend-api/SKILL.md) · [인증 통합 테스트](https://github.com/00700lsm/user-management-backend/blob/dev/.agents/skills/test-auth-integration/SKILL.md)
 
 Agent는 작업 대상 Repository의 `AGENTS.md`/`CLAUDE.md` 및 Skill을 직접 참조합니다. API 정본은 Contract에 있으며, 실제 코드/설계 변경과 Commit은 해당 Repository에서만 처리합니다.
 
