@@ -1,0 +1,22 @@
+name: Workspace bootstrap checks
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  workspace-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bootstrap Bash syntax
+        run: |
+          bash -n scripts/init.sh
+          bash -n scripts/use-dev.sh
+      - name: Check scope and Agent Skill structure
+        run: python3 scripts/check_workspace_structure.py
